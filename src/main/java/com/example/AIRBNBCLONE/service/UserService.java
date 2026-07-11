@@ -1,5 +1,6 @@
 package com.example.AIRBNBCLONE.service;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.modelmapper.ModelMapper;
@@ -14,6 +15,7 @@ import com.example.AIRBNBCLONE.dto.SignUpDto;
 import com.example.AIRBNBCLONE.dto.UserDto;
 import com.example.AIRBNBCLONE.entity.User;
 import com.example.AIRBNBCLONE.entity.enums.Role;
+import com.example.AIRBNBCLONE.exception.ResourceNotFoundException;
 import com.example.AIRBNBCLONE.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,12 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
      public UserDto createAccount(SignUpDto signUpDto){
+        Optional<User> existingUser=userRepository.findByEmail(signUpDto.getEmail());
+        if(existingUser.isPresent()){
+            throw new IllegalArgumentException("User already exists with email: " + signUpDto.getEmail());
+        }   
+        
+       
         User usercreate=modelMapper.map(signUpDto, User.class);
         usercreate.setRoles(Set.of(Role.GUEST));
         usercreate.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
@@ -45,5 +53,9 @@ public class UserService {
 
         return arr;
     }
+    public User getUserById(Long id){
+        return userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("User not found with Id: "+id));
+    }
+    
     
 }

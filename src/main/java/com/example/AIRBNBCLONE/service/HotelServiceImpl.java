@@ -3,10 +3,12 @@ package com.example.AIRBNBCLONE.service;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.example.AIRBNBCLONE.dto.HotelDto;
 import com.example.AIRBNBCLONE.entity.Hotel;
+import com.example.AIRBNBCLONE.entity.User;
 import com.example.AIRBNBCLONE.exception.ResourceNotFoundException;
 import com.example.AIRBNBCLONE.repository.HotelRepository;
 
@@ -23,6 +25,10 @@ public class HotelServiceImpl implements HotelService{
     public HotelDto createNewHotel(HotelDto hotelDto) {
         
          Hotel hotel=modelMapper.map(hotelDto, Hotel.class);
+         User currentUser = (User) SecurityContextHolder.getContext()
+            .getAuthentication().getPrincipal();
+            System.out.println("Current User: " + currentUser);
+         hotel.setOwner(currentUser);
          Hotel saveHotel=hotelRepository.save(hotel);
          return modelMapper.map(saveHotel, HotelDto.class);
     }

@@ -33,6 +33,7 @@
 /home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/repository/InventoryRepository.java
 /home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/repository/RoomRepository.java
 /home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/repository/UserRepository.java
+/home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/secuirity/JwtAuthFilter.java
 /home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/service/AuthService.java
 /home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/service/HotelService.java
 /home/suraj/Desktop/AIRBNBCLONE/src/main/java/com/example/AIRBNBCLONE/service/HotelServiceImpl.java
