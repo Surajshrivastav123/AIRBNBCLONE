@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import com.example.AIRBNBCLONE.dto.HotelPriceResponseDto;
+import com.example.AIRBNBCLONE.dto.HotelSearchRequest;
 import com.example.AIRBNBCLONE.dto.InventoryDto;
 import com.example.AIRBNBCLONE.dto.UpdateInventoryRequestDto;
 import com.example.AIRBNBCLONE.entity.Inventory;
@@ -59,6 +62,12 @@ public class InventoryServiceImpl implements InventoryService {
     public void updateInventory(Long roomId, UpdateInventoryRequestDto updateInventoryRequestDto) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateInventory'");
+    }
+
+    @Override
+    public Page<HotelPriceResponseDto> searchHotels(HotelSearchRequest HotelSearchRequest) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'searchHotels'");
     }
     
 }
